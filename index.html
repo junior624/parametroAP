@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Parâmetros</title>
+    <!-- Inclui o arquivo CSS para a estilização -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Inclui o Font Awesome para os ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -13,7 +16,7 @@
 
         <div class="header-controls">
             <input type="text" id="search-box" placeholder="Digite para buscar...">
-            <button id="add-param-btn">Adicionar Parâmetro</button>
+            <button id="add-param-btn"><i class="fas fa-plus-circle mr-2"></i>Adicionar Parâmetro</button>
         </div>
         
         <div class="table-container">
@@ -23,26 +26,30 @@
                         <th>Chave</th>
                         <th>Valor</th>
                         <th>Descrição</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
                     <!-- O conteúdo da tabela será gerado dinamicamente pelo JavaScript -->
                     <tr>
-                        <td colspan="3" style="text-align: center;">Carregando dados...</td>
+                        <td colspan="4" style="text-align: center;">Carregando dados...</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Modal para adicionar novo parâmetro -->
+    <!-- Modal para adicionar/editar novo parâmetro -->
     <div id="add-param-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Adicionar Novo Parâmetro</h2>
+            <h2 id="modal-title">Adicionar Novo Parâmetro</h2>
             <form id="add-param-form">
-                <label for="chave">Chave:</label>
-                <input type="text" id="chave" name="chave" required>
+                <!-- Campo oculto para o ID do documento, usado para edição -->
+                <input type="hidden" id="doc-id" name="doc-id">
+                
+                <label for="campo">Chave:</label>
+                <input type="text" id="campo" name="campo" required>
 
                 <label for="valor">Valor:</label>
                 <input type="text" id="valor" name="valor" required>
@@ -50,7 +57,7 @@
                 <label for="descricao">Descrição:</label>
                 <textarea id="descricao" name="descricao"></textarea>
 
-                <button type="submit">Salvar Parâmetro</button>
+                <button type="submit" id="submit-btn">Salvar Parâmetro</button>
             </form>
         </div>
     </div>
@@ -60,6 +67,7 @@
         Parâmetro copiado para a área de transferências!
     </div>
 
+    <!-- Inclui o arquivo JavaScript para a funcionalidade -->
     <script type="module" src="scripts.js"></script>
 </body>
 </html>
